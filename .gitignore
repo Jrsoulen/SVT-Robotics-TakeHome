@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SVT-Robotics-TakeHome/.vs
+/SVT-Robotics-TakeHome/SVT-Robotics-TakeHome/obj
+/.vs/SVT-Robotics-TakeHome/v16
