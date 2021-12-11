@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace SVT_Robotics_TakeHome.Infrastructure
 {
     public class SvtRoboticsRepo
     {
-        public async Task<Robot> GetRobotForLoadAsync(Load load)
+        public async Task<List<Robot>> GetAvailableRobotsAsync()
         {
             var url = "https://60c8ed887dafc90017ffbd56.mockapi.io/robots";
+            List<Robot> availableRobots = new List<Robot>();
 
             using (HttpClient client = new HttpClient())
             {
@@ -20,12 +25,11 @@ namespace SVT_Robotics_TakeHome.Infrastructure
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
-                    // deserialize first since json is your response type
-                    var table = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+                    availableRobots = JsonConvert.DeserializeObject<List<Robot>>(data);
                 }
             }
 
-            return new Robot();
+            return availableRobots;
         }
     }
 }

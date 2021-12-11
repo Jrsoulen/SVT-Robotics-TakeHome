@@ -17,4 +17,16 @@
     <ProjectReference Include="..\SVT-Robotics-TakeHome\SVT-Robotics-TakeHome.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Fixtures\AvailableRobots.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fixtures\SampleLoad.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fixtures\SampleResult.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

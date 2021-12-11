@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using System;
+using System.Numerics;
 
 namespace SVT_Robotics_TakeHome
 {
@@ -9,12 +9,13 @@ namespace SVT_Robotics_TakeHome
         public int RobotId { get; set; }
 
         [JsonProperty("batteryLevel")]
-        public int BatteryLevel { get; set; }
+        public int BatteryLevel { get; set; }        
 
         [JsonProperty("x")]
-        public double XCoordinate { get; set; }
+        public float X { get; set; }
 
         [JsonProperty("y")]
-        public double YCoordinate { get; set; }
+        public float Y { get; set; }
+        public Vector2 Coordinates { get; set; }
     }
 }

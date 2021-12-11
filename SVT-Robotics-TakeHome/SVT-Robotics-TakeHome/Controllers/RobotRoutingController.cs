@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SVT_Robotics_TakeHome.Infrastructure;
 
 namespace SVT_Robotics_TakeHome.Controllers
 {
@@ -21,7 +19,12 @@ namespace SVT_Robotics_TakeHome.Controllers
         [HttpPost]
         public Robot GetRobotForLoad(string postData)
         {
-            return new Robot();
+            var repo = new SvtRoboticsRepo();
+            var load = JsonConvert.DeserializeObject<Load>(postData);
+
+            var availableRobots = repo.GetAvailableRobotsAsync().Result;
+
+            return RobotMaths.GetOptimalRobotForLoad(availableRobots, load);
         }
     }
 }
