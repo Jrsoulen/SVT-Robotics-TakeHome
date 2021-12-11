@@ -8,6 +8,9 @@ namespace SVT_Robotics_TakeHome
         [JsonProperty("robotId")]
         public int RobotId { get; set; }
 
+        [JsonProperty("batteryLevel")]
+        public int BatteryLevel { get; set; }
+
         [JsonProperty("x")]
         public double XCoordinate { get; set; }
 
