@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using SVT_Robotics_TakeHome.Infrastructure;
+using System.Numerics;
 
 namespace SVT_Robotics_TakeHome.Controllers
 {
@@ -9,22 +8,27 @@ namespace SVT_Robotics_TakeHome.Controllers
     [Route("[controller]")]
     public class RobotRoutingController : ControllerBase
     {
-        private readonly ILogger<RobotRoutingController> _logger;
-
-        public RobotRoutingController(ILogger<RobotRoutingController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpPost]
-        public Robot GetRobotForLoad(string postData)
+        [Route("GetRobotForLoad")]
+        public RobotResponse GetRobotForLoad([FromBody] Load load)
         {
             var repo = new SvtRoboticsRepo();
-            var load = JsonConvert.DeserializeObject<Load>(postData);
-
             var availableRobots = repo.GetAvailableRobotsAsync().Result;
 
-            return RobotMaths.GetOptimalRobotForLoad(availableRobots, load);
+            var optimalRobot = RobotMaths.GetOptimalRobotForLoad(availableRobots, load);
+
+            return new RobotResponse()
+            {
+                RobotId = optimalRobot.RobotId,
+                DistanceToGoal = Vector2.Distance(optimalRobot.Coordinates, load.Coordinates),
+                BatteryLevel = optimalRobot.BatteryLevel
+            };
+        }
+        [HttpGet]
+        [Route("ping")]
+        public string ping()
+        {
+            return System.DateTime.Now.ToString();
         }
     }
 }
