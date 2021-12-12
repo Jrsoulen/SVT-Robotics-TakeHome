@@ -6,7 +6,7 @@ Should be very straightforward:
  1. Clone repo
  2. Open solution in Visual Studio
  2. Run IIS Express green button
- 3. Hit endpoint http://localhost:6026/RobotRouting/GetRobotForLoad with a JSON body shaped as specced
+ 3. Hit POST endpoint http://localhost:6026/RobotRouting/GetRobotForLoad with a JSON body shaped as specced
  4. Serve and Enjoy
 
 NEXT STEPS:
