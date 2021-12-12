@@ -1,5 +1,5 @@
 {
   "robotId": 58,
-  "distanceToGoal": 49.9, //Indicates how far the robot is from the load which needs to be moved.
-  "batteryLevel": 30 //Indicates current battery level of the robot.
+  "distanceToGoal": 49.9,
+  "batteryLevel": 30
 }

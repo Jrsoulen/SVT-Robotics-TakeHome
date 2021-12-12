@@ -26,6 +26,7 @@ namespace UnitTests
 
             // Assert
             Assert.AreEqual(2, robot.X);
+            Assert.AreEqual(7, robot.Y);
         }
     }
 
